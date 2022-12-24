@@ -46,7 +46,7 @@ class KalmanFilter {
 
     }
     
-}
+};
 //sample main sequence, users can pass their data in and use this code to create their kalman filter
 int main() {
     //you can initialize an input vector that represents the data from your sensor
@@ -59,7 +59,15 @@ int main() {
     KalmanFilter myFilter(a, b, c, d);
     //vector that represents the readings, replace this placeholder vector with vector of actual datapoints
     vector<double> sensorReadings;
-
     
+    //vector that represents the filtered readings returned by the filter
+    vector<double> filteredReadings;
 
+    //for loop to update the filtered vector with each prediction
+    for (int i = 0; i < sensorReadings.size(); i++) {
+        myFilter.update(sensorReadings[i]);
+        double estimate = myFilter.getPrediction();
+        filteredReadings.push_back(estimate);
+    }
+    return 0;
 }
