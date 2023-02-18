@@ -2,7 +2,7 @@
 #include <Eigen/Dense>
 
 using namespace Eigen;
-
+//Kalman Filter class definition
 class KalmanFilter{
     private:
     VectorXD x;
